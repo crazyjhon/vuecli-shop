@@ -1,6 +1,6 @@
 # myvue
 
-> A Vue.js project
+> 这是一个网上商城的项目，之前用手动配置了webpack,这次重新用vuecli2重构了项目
 
 ## Build Setup
 
