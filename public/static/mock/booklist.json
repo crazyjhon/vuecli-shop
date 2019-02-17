@@ -1,0 +1,10 @@
+[
+    {"id":2008,"price":2008,"oprice":2000,"store":60,"title":"东坡集","url":"public/static/images/book/1.jpg","description": "渺万里层云，摇曳春如线"},
+    {"id":2009,"price":2009,"oprice":2000,"store":13,"title":"明朝那些事儿","url":"public/static/images/book/2.jpg","description": "常遇春老河口遇张三丰"},
+    {"id":2010,"price":2010,"oprice":2000,"store":20,"title":"夏洛特的网","url":"public/static/images/book/3.jpg","description": "一头猪的故事"},
+    {"id":2011,"price":2011,"oprice":2000,"store":100,"title":"Andalucia","url":"public/static/images/book/4.jpg","description": "maybe this is just a horse"},
+    {"id":2012,"price":2012,"oprice":2000,"store":34,"title":"笑场","url":"public/static/images/book/5.jpg","description": "一部未知小说"},
+    {"id":2013,"price":2013,"oprice":2000,"store":16,"title":"月亮与六便士","url":"public/static/images/book/6.jpg","description": "比剑"},
+    {"id":2014,"price":2014,"oprice":2000,"store":77,"title":"山川岁月长","url":"public/static/images/book/7.jpg","description": "万安寺六大派被囚"},
+    {"id":2015,"price":2015,"oprice":2000,"store":56,"title":"慢煮生活","url":"public/static/images/book/8.jpg","description": "丘处机众人等"}
+]

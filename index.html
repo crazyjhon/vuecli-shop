@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="telephone=no,email=no" name=format-detection>
+    <meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Document</title>
+    <style>
+        html,body{
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+</head>
+<body style="background-color:#fff;overflow-x: hidden" >
+    <div id="app"></div>
+</body>
+<script>
+    document.body.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+    }, {
+        passive: false
+    });
+</script>
+</html>
