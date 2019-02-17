@@ -22,10 +22,10 @@
                 var url;
                 //模拟数据传参逻辑
                 if(this.goodsId){
-                     url='public/static/mock/bookimage.json?id='+this.goodsId;
+                     url='/api/bookswipe';
                 }else{
                     //首页的轮播图地址
-                     url='public/static/mock/swipeimage.json';
+                     url='/api/homeswipe';
                 }
                 var that=this;
                 this.$http.get(url).then(function(res){

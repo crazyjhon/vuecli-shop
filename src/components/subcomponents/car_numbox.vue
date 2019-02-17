@@ -34,7 +34,7 @@
             //根据id查商品的库存
             getStore:function(){
                 var that=this;
-                this.$http.get('public/static/mock/booklist.json').then(function(res){
+                this.$http.get('/api/bookstore').then(function(res){
                     res.body.some(function(item){
                         if(that.goodsId===item.id){
                             that.max=item.store;

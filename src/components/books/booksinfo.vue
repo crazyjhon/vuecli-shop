@@ -165,7 +165,7 @@
             //获取数据
             show:function(){
                 var that=this;
-                this.$http.get('public/static/mock/booklist.json').then(function(res){
+                this.$http.get('/api/booklist').then(function(res){
                     //    这里需要自己做后台页面，来根据参数返回一个数据，因为这里传了参数，有逻辑处理
                     res.body.some(function(item,index){
                         if(parseInt(that.$route.params.id)===item.id){

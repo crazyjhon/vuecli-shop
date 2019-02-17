@@ -19,7 +19,7 @@
         methods:{
             getinfo:function(){
                 var that=this;
-                this.$http.get('public/static/mock/bookdetailsimage.json').then(function(res){
+                this.$http.get('/api/bookdetails').then(function(res){
                     that.imgSrc=res.body;
                 });
             }

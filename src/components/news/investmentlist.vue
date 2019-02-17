@@ -27,7 +27,7 @@
         methods:{
             getNews:function(){
                 var that=this;
-               this.$http.get('public/static/mock/newsList.json').then(function(res){
+               this.$http.get('/api/news').then(function(res){
                     that.news=res.body.T1348647853363;
                });
             }

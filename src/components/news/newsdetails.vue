@@ -2,17 +2,17 @@
     <div class="newsDetails">
         <div id="article">
             <div class="head">
-                <h1 class="title">习近平到天津考察 参观南开百年校史展览</h1>
+                <h1 class="title">{{ newsdetails.title }}</h1>
                 <div class="info">
-                    <span class="time js-time">2019-01-17 11:02:15</span>
-                    <span class="source js-source">新华网</span>
+                    <span class="time js-time">{{ newsdetails.lmodify }}</span>
+                    <span class="source js-source">{{ newsdetails.source }}</span>
                 </div>
             </div>
             <div class="content">
-               <p>17日上午，习近平来到天津考察调研。在南开大学，他参观了百年校史主题展览，与部分院士、专家和中青年师生代表互动交流，察看了化学学院和元素有机化学国家重点实验室，详细了解南开大学历史沿革、学科建设、人才队伍、科研创新等情况。</p>
+               <p>{{ newsdetails.digest }}</p>
                 <div class="editor_title">
-                    <p>(原标题：习近平在天津考察)</p>
-                    <p>(责任编辑：钱珏晓_NBJ10675)</p>
+                    <p>(原标题：XXXXXX)</p>
+                    <p>(责任编辑：行尽江南)</p>
                 </div>
             </div>
         </div>
@@ -26,6 +26,7 @@
         data:function(){
             return {
                 id:this.$route.params.id,
+                newsdetails:{},
                 newsList:[
                     {user:'四代歼机',content:'习总威武！',date:'2019-01-31 06:31:00'},
                     {user:'行尽江南',content:'南开大学不愧是百年名校！',date:'2019-01-31 9:00:00'},
@@ -41,8 +42,8 @@
         methods:{
             show:function(){
                 var that=this;
-                this.$http.get('public/static/mock/newsList.json',{params:{id:that.id}}).then(function(res){
-                //    这里需要自己做后台页面，来根据参数返回一个数据，因为这里传了参数，有逻辑处理
+                this.$http.post('/api/newsdetails',{newsID:that.id}).then(function(res){
+                  that.newsdetails = res.body;
                 });
             }
         },

@@ -28,7 +28,7 @@
         methods:{
             getMessage:function(){
                 var that=this;
-                this.$http.get('public/static/mock/booklist.json').then(function(res){
+                this.$http.get('/api/book').then(function(res){
                     that.booklist=res.body;
                 });
             },

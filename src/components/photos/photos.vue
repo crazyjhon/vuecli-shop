@@ -56,7 +56,7 @@
         methods:{
             getPhotoList:function(){
                 var that=this;
-                this.$http.get('public/static/mock/photolist.json').then(function(res){
+                this.$http.get('/api/photos').then(function(res){
                     that.images=res.body;
                 })
             }

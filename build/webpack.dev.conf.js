@@ -10,8 +10,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
-const HOST = process.env.HOST
-const PORT = process.env.PORT && Number(process.env.PORT)
+//process是node的全局属性，他有一个env属性
+const HOST = process.env.HOST //定义服务器地址,const HOST的值是undefined
+const PORT = process.env.PORT && Number(process.env.PORT) //定义服务器端口 const POrT的值是undefined
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -31,8 +32,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     hot: true,
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
-    host: HOST || config.dev.host,
-    port: PORT || config.dev.port,
+    host: HOST || config.dev.host,//地址在config的index.js里面配置
+    port: PORT || config.dev.port,//同上
     open: config.dev.autoOpenBrowser,
     overlay: config.dev.errorOverlay
       ? { warnings: false, errors: true }

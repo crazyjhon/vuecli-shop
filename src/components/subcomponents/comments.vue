@@ -35,7 +35,7 @@
                     return
                 }
                 var that=this;
-                this.$http.get('./mock/comments.json',{data:that.content}).then(function(res){
+                this.$http.get('/api/comments',{data:that.content}).then(function(res){
                     if(res.body.status==="ok"){
                         Toast("发表成功！");
                     }else{
