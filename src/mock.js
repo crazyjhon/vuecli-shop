@@ -23,3 +23,23 @@ Mock.mock('/api/booklist', 'get', require('./mock/booklist'));
 Mock.mock('/api/bookdetails', 'get', require('./mock/bookdetailsimage'));
 Mock.mock('/api/comments', 'get', require('./mock/comments'));
 Mock.mock('/api/bookstore', 'get', require('./mock/booklist'));
+Mock.mock('/api/login', 'post', function (req) {
+  var usersession = require('./mock/session');
+  var postdata = JSON.parse(req.body);
+  if (postdata.user === usersession.user && parseInt(postdata.password) === usersession.password) {
+   return {
+      err_code : 1,
+      message : '用户验证成功'
+    }
+  } else {
+    return {
+      err_code :0,
+      message : '用户名或密码错误'
+    }
+  }
+});
+Mock.mock('/api/logout', 'post', function (req) {
+  return {err_code:1,message:'退出登陆成功'};
+});
+
+

@@ -25,19 +25,34 @@
                 password:''
             }
         },
+        created:function () {
+          //如果本地没有存储用户信息就代表没登陆，就直接跳转到登陆页面
+          if (!this.$store.getters.getUserSession.user) {
+            this.$router.push('/center/login');
+          } else {
+            //跳转me页面
+            this.$router.push('/center/me');
+          }
+        },
         methods:{
             userCheck: function () {
+              //这里的格式校验以后修改
                 if (this.user && this.password){
-                    console.log(this.user);
-                    this.$http.post('localhost:3000/login',{user:this.user,password:this.password}).then(function () {
+                    let submitData = {user:this.user,password:this.password};
+                    let userInfo = {user:this.user};
+                    this.$http.post('/api/login',submitData).then(function (res) {
+                      if (res.body.err_code === 1) {
+                        //如果服务端验证成功就保存用户的信息,这里仅仅保存了用户名，如果需要别的用户信息，这里还可以在服务端请求
+                        this.$store.commit('addUserSession',userInfo);
+                        this.$router.push('/center/me');
+
+                      } else if(res.body.err_code ===0) {
+                        console.log(res.body.message);
+                      }
 
                     })
-                    // this.$http.post({
-                    //     url:'baidu.com',
-                    //     data:this.user
-                    // }).then(function () {
-                    //
-                    // })
+                } else{
+                  alert('用户名或者密码为空');
                 }
             }
         }

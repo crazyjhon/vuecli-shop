@@ -2,15 +2,28 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
-//本地数据持久化，刷新或者打开页面的时候先获取localStorage数据，如果没有，则空数组
+//本地数据持久化，刷新或者打开页面的时候先获取localStorage数据，如果没有，则空
 var  car = JSON.parse(localStorage.getItem('car') || '[]');
+var  userSession = JSON.parse(localStorage.getItem('userSession') || '{}');
+
 //状态管理对象
 export default new Vuex.Store({
     state:{//类似data的功能,this.$store.state.***
-        car:car//购物车的商品的数据[{id:商品id,count:商品数量，price:单价,selected:true}]
+        car:car,//购物车的商品的数据[{id:商品id,count:商品数量，price:单价,selected:true}]
+        userSession:userSession//从服务器获取的session信息
         //比如在打开购物车的时候，有些商品默认是被勾选的，有些不被勾选，这里默认是勾选的，用selected代表
     },
-    mutations:{//类似方法的功能,this.$store.commit(方法名，参数)
+    mutations:{//类似方法的功能,this.$store.commit(方法名，参数),函数不能有返回值，有也接收不到
+        addUserSession:function (state,session) {//登陆成功就添加用户信息
+          state.userSession = session;
+          // console.log(this.state.userSession);
+          //将数据保存到本地localStorage
+          localStorage.setItem('userSession',JSON.stringify(state.userSession));
+        },
+        deleteUserSession:function (state) {
+          state.userSession = {};
+          localStorage.setItem('userSession',JSON.stringify(state.userSession));
+        },
         addTocar:function(state,goodsinfo){
             //假设 在购物车中，没有找到现在要加入到购物车的商品
             var flag=false;
@@ -52,7 +65,6 @@ export default new Vuex.Store({
         updateCarListCount:function(state,obj){
             state.car.some(function(item,){
                 if(obj.id===item.id){
-                    console.log(obj.id+'循环内');
                     item.count=obj.count;
                     return true
                 }
@@ -63,6 +75,10 @@ export default new Vuex.Store({
 
     },
     getters:{//包装state后的值，this.$store.getters.***
+        //获取用户信息
+        getUserSession:function (state) {
+          return state.userSession
+        },
         //购物车总数
         getAllCount:function(state) {
             var c = 0;

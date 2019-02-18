@@ -5,6 +5,10 @@ import App from './App'
 import router from './router'
 import './mock'
 
+//自定义函数
+import util from './utils/util'
+Vue.prototype.util = util;
+
 import resource from 'vue-resource';
 Vue.use(resource);
 
@@ -41,3 +45,4 @@ new Vue({
   store
  
 })
+

@@ -28,7 +28,7 @@
                         <p>总计(不含运费)</p>
                         <p>已购选商品 <span class="number">￥{{$store.getters.getCountAndPrice.count}}</span> 件，总价：<span class="number money">￥{{$store.getters.getCountAndPrice.amount}}</span></p>
                     </div>
-                    <mt-button type="danger"  size="small">去结算</mt-button>
+                    <mt-button type="danger" @click="checkLogin" size="small">去结算</mt-button>
                 </div>
             </div>
         </div>
@@ -68,12 +68,26 @@
             remove:function(id,index){
                 this.carList.splice(index,1);
                 this.$store.commit('removeFromCart',id);
+                //每次删除后都判断下，如果没有商品了就赋值显示快去购物
+                this.isShow = this.$store.getters.getCountAndPrice.count === 0 ? true :false;
+                // this.$store.getters.getCountAndPrice.count ? this.isShow=true :
             },
             selectedChange:function(id,value){
                 //这里有一个bug没有解决，就是点击的时候会触发四次，当是radio和checkbox的时候
                 var info={id:id,selected:value};
                 // console.log(id+'---'+value);
                 this.$store.commit('updateGoodsStatus',info);
+            },
+            checkLogin:function () {
+              if (this.$store.getters.getCountAndPrice.count === 0) {
+                alert('您的购物车什么都没有，请先挑选商品');
+                //如果本地没有存储用户信息就代表没登陆，就直接跳转到登陆页面
+              }else if (!this.$store.getters.getUserSession.user) {
+                this.$router.push('/center/login');
+              } else {
+                //跳转支付页面
+                this.$router.push('/center/pay');
+              }
             }
         },
         components:{
