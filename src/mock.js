@@ -3,7 +3,18 @@ const Mock = require('mockjs')
 //使用mockjs模拟数据
 
 Mock.mock('/api/homeswipe', 'get', require('./mock/swipeimage'));
-Mock.mock('/api/news', 'get', require('./mock/newsList'));
+Mock.mock('/api/news', 'post', function (req) {
+  var data = JSON.parse(req.body);
+  var page = data.page;
+  var pagesize = data.pagesize;
+  var newsData = require('./mock/newsList').T1348647853363;
+  var news = newsData;
+  var jiequ = news.splice((page-1)*pagesize,pagesize);
+
+  //每次查询完数据，都要清除require的默认缓存，下次调用的时候重新加载。
+  delete require.cache[require.resolve('./mock/newsList')];
+  return jiequ;
+});
 Mock.mock('/api/newsdetails', 'post', function (req) {
   var docid = JSON.parse(req.body).newsID;
   var newsData = require('./mock/newsList').T1348647853363;
@@ -16,8 +27,30 @@ Mock.mock('/api/newsdetails', 'post', function (req) {
   });
   return result;
 });
-Mock.mock('/api/photos', 'get', require('./mock/photolist'));
-Mock.mock('/api/book', 'get', require('./mock/booklist'));
+Mock.mock('/api/photos', 'post', function (req) {
+  var data = JSON.parse(req.body);
+  var page = data.page;
+  var pagesize = data.pagesize;
+  var newsData = require('./mock/photolist');
+  var news = newsData;
+  var jiequ = news.splice((page-1)*pagesize,pagesize);
+
+  //每次查询完数据，都要清除require的默认缓存，下次调用的时候重新加载。
+  delete require.cache[require.resolve('./mock/photolist')];
+  return jiequ;
+});
+Mock.mock('/api/book', 'post', function (req) {
+  var data = JSON.parse(req.body);
+  var page = data.page;
+  var pagesize = data.pagesize;
+  var newsData = require('./mock/booklist');
+  var news = newsData;
+  var jiequ = news.splice((page-1)*pagesize,pagesize);
+
+  //每次查询完数据，都要清除require的默认缓存，下次调用的时候重新加载。
+  delete require.cache[require.resolve('./mock/booklist')];
+  return jiequ;
+});
 Mock.mock('/api/bookswipe', 'get', require('./mock/bookswipe'));
 Mock.mock('/api/booklist', 'get', require('./mock/booklist'));
 Mock.mock('/api/bookdetails', 'get', require('./mock/bookdetailsimage'));

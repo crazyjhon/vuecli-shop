@@ -10,7 +10,6 @@
             padding: 0;
             margin: 0;
             height: 100%;
-            overflow: hidden;
             -webkit-overflow-scrolling: touch;
         }
     </style>
@@ -18,11 +17,4 @@
 <body style="background-color:#fff;overflow-x: hidden" >
     <div id="app"></div>
 </body>
-<script>
-    document.body.addEventListener('touchmove', function(e) {
-        e.preventDefault();
-    }, {
-        passive: false
-    });
-</script>
 </html>

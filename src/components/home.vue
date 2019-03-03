@@ -2,7 +2,7 @@
     <div class="home-container">
         <swipe :isfull="true"></swipe>
         <ul class="mui-table-view mui-grid-view mui-grid-9">
-            <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-2"><router-link to="/home/news/investmentlist">
+            <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-2"><router-link to="/home/news">
                 <!--<span class="mui-icon mui-icon-home"></span>-->
                 <img src="../assets/icon1.png" alt="">
                 <div class="mui-media-body">新闻</div></router-link>

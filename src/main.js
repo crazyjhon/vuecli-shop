@@ -3,14 +3,18 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+
 import './mock'
 
 //自定义函数
-import util from './utils/util'
+import util from './utils/checkSession'
 Vue.prototype.util = util;
 
 import resource from 'vue-resource';
 Vue.use(resource);
+//下拉加载插件
+import Mescroll from 'mescroll.js/mescroll.vue'
+Vue.component('mescroll-vue',Mescroll);
 
 import store from './vuex/store';
 //mintUI包
@@ -34,7 +38,7 @@ import 'vue-awesome-mui/mui/dist/css/icons-extra.css'
 Vue.use(Mui);
 
 Vue.config.productionTip = false
-
+// console.log(MescrollVue);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -43,6 +47,5 @@ new Vue({
     },
   router,
   store
- 
-})
+});
 

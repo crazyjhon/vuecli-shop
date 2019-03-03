@@ -1,21 +1,27 @@
 <template>
     <div class="newsDetails">
-        <div id="article">
-            <div class="head">
+      <div class="mui-card">
+        <div class="mui-card-content">
+          <div class="mui-card-content-inner">
+            <div id="article">
+              <div class="head">
                 <h1 class="title">{{ newsdetails.title }}</h1>
                 <div class="info">
-                    <span class="time js-time">{{ newsdetails.lmodify }}</span>
-                    <span class="source js-source">{{ newsdetails.source }}</span>
+                  <span class="time js-time">{{ newsdetails.lmodify }}</span>
+                  <span class="source js-source">{{ newsdetails.source }}</span>
                 </div>
-            </div>
-            <div class="content">
-               <p>{{ newsdetails.digest }}</p>
+              </div>
+              <div class="content">
+                <p>{{ newsdetails.digest }}</p>
                 <div class="editor_title">
-                    <p>(原标题：XXXXXX)</p>
-                    <p>(责任编辑：行尽江南)</p>
+                  <p>(原标题：XXXXXX)</p>
+                  <p>(责任编辑：行尽江南)</p>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
         <comments :newsList="newsList"></comments>
     </div>
 </template>
@@ -55,20 +61,15 @@
 </script>
 <style lang="scss" scoped>
     .newsDetails{
+      padding-bottom:35px;
         #article {
-            margin-bottom:30px;
-            padding: 0 20px;
-            background-color: #f6f6f6;
             .head {
                 font-weight: 400;
-                padding: 13px 0 0;
-
                 .title {
                     font-size: 20px;
                     color: #404040;
                     line-height: 30px;
                 }
-
                 .info {
                     font-size: 14px;
                     margin: 5px 0 20px;
@@ -98,61 +99,6 @@
                         text-align: right;
                         color: #404040;
                     }
-                }
-            }
-        }
-        #comments{
-            padding: 5px 20px;
-            background-color: #f6f6f6;
-            border:#f6f6f6;
-            .comments-area {
-                h4{
-                    color:#666;
-                    letter-spacing:1px;
-                    line-height:20px;
-                }
-                textarea {
-                    margin-bottom: 5px;
-                    border:1px solid #8a6de9;
-                    font-size: 13px;
-                    letter-spacing: 1px;
-                }
-                .mui-btn-block {
-                    font-size: 18px;
-                    display: block;
-                    width: 100%;
-                    margin-bottom: 10px;
-                    padding: 5px 0;
-                }
-            }
-            .comments-group {
-                padding: 0;
-                margin: 0;
-                color: #333;
-                li {
-                    list-style: none;
-                    padding: 0;
-                    margin: 0;
-                    div {
-                        .user {
-
-                        }
-                        .comments-content {
-                            color:#000;
-                            letter-spacing:1px;
-                        }
-                        .date {
-                            display: flex;
-                            justify-content: space-between;
-                            a{
-                                color:#8a6de9;
-                            }
-                        }
-                        hr{
-                            border:1px dashed #8A9295;
-                        }
-                    }
-
                 }
             }
         }

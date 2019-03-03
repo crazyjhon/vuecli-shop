@@ -31,8 +31,8 @@ export default new Router({
         {path:'/center/register',component:register,name:'用户注册'},
         {path:'/center/login',component:login,name:'用户登陆'},
         {path:'/center/logout',component:logout,name:'退出登陆'},
-        {path:'/home/news/investmentlist',component:investmentList,name:'时事新闻'},
-        {path:'/home/news/investmentlist/newsdetails/:id',component:newsdetails,name:'新闻详情'},
+        {path:'/home/news',component:investmentList,name:'时事新闻'},
+        {path:'/home/news/newsdetails/:id',component:newsdetails,name:'新闻详情'},
         {path:'/home/books',component:books,name:'书籍'},
         {path:'/home/booksinfo/:id',component:booksinfo,name:'商品详情'},
         {path:'/home/photos',component:photos,name:'图片浏览'}

@@ -1,11 +1,20 @@
 <template>
     <div id="comments">
-        <div class="comments-area">
-            <h4>发表评论</h4>
-            <textarea placeholder="文明评论，不传谣言！" rows="5" v-model="content"></textarea>
-            <button type="button" @click="submit" class="mui-btn mui-btn-royal mui-btn-block mui-btn-outlined">发表评论</button>
+      <div class="mui-card">
+        <div class="mui-card-content">
+          <div class="mui-card-content-inner">
+            <div class="comments-area">
+              <h4>发表评论</h4>
+              <textarea placeholder="文明评论，不传谣言！" rows="5" v-model="content"></textarea>
+              <button type="button" @click="submit" class="mui-btn mui-btn-royal mui-btn-block mui-btn-outlined">发表评论</button>
+            </div>
+          </div>
         </div>
-        <ul class="comments-group">
+      </div>
+      <div class="mui-card">
+        <div class="mui-card-content">
+          <div class="mui-card-content-inner">
+            <ul class="comments-group">
             <li v-for="item in newsList" :key="item.user" class="comments-list">
                 <div>
                     <p class="user">用户：{{ item.user }}</p>
@@ -15,6 +24,9 @@
                 </div>
             </li>
         </ul>
+          </div>
+        </div>
+      </div>
     </div>
 </template>
 
@@ -49,15 +61,13 @@
 </script>
 
 <style lang="scss" scoped>
-#comments{
-    padding: 5px 20px;
-    background-color: #f6f6f6;
-    border:#f6f6f6;
+  #comments{
     .comments-area {
         h4{
             color:#666;
             letter-spacing:1px;
             line-height:20px;
+            padding-bottom: 7px;
         }
         textarea {
             margin-bottom: 5px;

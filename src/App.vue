@@ -1,20 +1,15 @@
 <template>
-    <div class="app-container  w-scroll">
-
+    <div class="app-container" >
         <!--header 顶部区域-->
         <mt-header fixed :title="$route.name"><span>111</span>
             <span slot="left" @click="goBack" v-show="flag">
                 <mt-button icon="back">返回</mt-button>
             </span>
         </mt-header>
-        <scroll>
 
-            <!--router-view 区域-->
         <transition >
-            <router-view></router-view>
+          <router-view></router-view>
         </transition>
-        </scroll>
-
 
         <!--tabBar 底部区域-->
         <nav class="mui-bar mui-bar-tab" >
@@ -39,7 +34,6 @@
 
 </template>
 <script>
-    import Scroll from './components/subcomponents/scroll.vue';
     export default {
         data:function(){
             return {
@@ -51,9 +45,11 @@
             goBack:function(){
                 this.$router.go(-1);
 
-            }
+            },
+
         },
         created:function(){
+
             //开始渲染的时候如果购物车有商品，就返回false,(显示)
            this.isHidden=this.$store.getters.getAllCount ? false : true;
            //返回按钮
@@ -76,34 +72,20 @@
                     this.flag=true;
                 }
             }
-        },
-        components:{
-            Scroll
         }
     }
 
 </script>
 
 <style lang="scss" scoped>
-    .w-scroll {
-        height: 100%;
-        overflow: auto;
-         -webkit-overflow-scrolling: touch;
-    }
     .app-container{
         width:100%;
-        padding-top:40px;
+        padding-top:35px;
         padding-bottom:60px;
-        overflow-x:hidden;
-        /* 设置滚动条宽度 */
+        /* 设置滚动条宽度  */
         ::-webkit-scrollbar {
-            width: 0px;
+          width: 0px;
         }
-        /*::-webkit-scrollbar {*/
-
-             /*display: none;!*隐藏滚轮*!*/
-
-        /*}*/
         .mint-header{
             background-color: #6F56A1;
             /*color:#929292;*/
@@ -160,7 +142,6 @@
     .hidden{
         visibility: hidden;
     }
-
 
 
 </style>
