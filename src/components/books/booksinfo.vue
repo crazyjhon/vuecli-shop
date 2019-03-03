@@ -164,15 +164,8 @@
             },
             //获取数据
             show:function(){
-                this.$http.get('/api/booklist').then((res) => {
-                    //    这里需要自己做后台页面，来根据参数返回一个数据，因为这里传了参数，有逻辑处理
-                    res.body.some((item,index) => {
-                        if(parseInt(this.$route.params.id)===item.id){
-                            this.goodsData=res.body[index];
-                            return true
-                        }
-                    })
-
+                this.$http.post('/api/bookinfo',{id:this.$route.params.id}).then((res) => {
+                  this.goodsData = res.body;
                 });
             }
         },

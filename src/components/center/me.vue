@@ -9,13 +9,13 @@
             </a>
           </li>
           <li class="mui-table-view-cell">
-            <a href="#" class="mui-navigate-right">账号与安全</a>
+            <router-link to="/center/password" class="mui-navigate-right">账号与安全</router-link>
           </li>
           <li class="mui-table-view-cell">
             <router-link to="/cart" class="mui-navigate-right">我的购物车</router-link>
           </li>
           <li class="mui-table-view-cell">
-            <a href="#" class="mui-navigate-right">收货地址管理</a>
+            <router-link to="/center/address" class="mui-navigate-right">收货地址管理</router-link>
           </li>
         </ul>
         <div class="p10">

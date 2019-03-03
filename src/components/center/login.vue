@@ -1,18 +1,24 @@
 <template>
     <div class="form_box">
-        <form action="">
-            <div class="mui-input-row">
+      <div class="mui-card">
+        <div class="mui-card-content">
+          <div class="mui-card-content-inner">
+            <form action="">
+              <div class="mui-input-row">
                 <input name="name" type="text" v-model="user" placeholder="用户名/手机号">
-            </div>
-            <div class="mui-input-row">
+              </div>
+              <div class="mui-input-row">
                 <input name="pass" type="password" placeholder="密码" v-model="password" class="mui-input-password">
                 <span class="mui-icon mui-icon-eye"></span>
-            </div>
-            <a href="javascript:;" @click="userCheck"  class="mui-btn mui-btn-primary btn_login">登录</a>
-            <div class="mui-input-row ">
+              </div>
+              <a href="javascript:;" @click="userCheck"  class="mui-btn mui-btn-royal btn_login">登录</a>
+              <div class="mui-input-row ">
                 <router-link to="/center/register">免费注册</router-link>
-            </div>
-        </form>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
 </template>
 
@@ -61,9 +67,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .form_box{
-        padding: 10px;
-    }
+
     .btn_login{
         width: 100%;
         margin: 10px 0;

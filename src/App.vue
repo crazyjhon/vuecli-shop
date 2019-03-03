@@ -53,7 +53,8 @@
             //开始渲染的时候如果购物车有商品，就返回false,(显示)
            this.isHidden=this.$store.getters.getAllCount ? false : true;
            //返回按钮
-            this.flag=this.$route.path==="/home" ? false :true;
+          this.flag = this.$route.path === "/home" || this.$route.path === '/center' ||
+                      this.$route.path === '/center/me' ? false :true;
         },
         //监听vuex的getAllcount的返回值，如果改变了，就让购物车徽章显示出来，computed和watch的组合
         computed:{
@@ -66,9 +67,9 @@
                 this.isHidden=n ? false : true;
             },
             '$route.path':function(n){
-                if(n==='/home'){
+                if (n==='/home' || n === '/center/me' || n === '/center') {
                     this.flag=false;
-                }else{
+                } else {
                     this.flag=true;
                 }
             }

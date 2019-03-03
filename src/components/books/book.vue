@@ -10,7 +10,7 @@
                             <p class="descri">{{ item.description }}</p>
                             <p class="author">带渲染</p>
                             <p class="type">平装</p>
-                            <p class="price">$19.9</p>
+                            <p class="price">￥{{ item.price}}</p>
                         </div>
                     </a>
                 </li>

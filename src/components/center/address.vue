@@ -1,10 +1,12 @@
 <template>
     <div class="address">
-        <div class="mui-scroll-wrapper">
-            <div class="mui-scroll">
-                <div class="loading"></div>
-            </div>
+      <div class="mui-card">
+        <div class="mui-card-content">
+          <div class="mui-card-content-inner">
+            dizhi
+          </div>
         </div>
+      </div>
     </div>
     
 </template>

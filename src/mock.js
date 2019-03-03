@@ -70,7 +70,17 @@ Mock.mock('/api/book', 'post', function (req) {
   return jiequ;
 });
 Mock.mock('/api/bookswipe', 'get', require('./mock/bookswipe'));
-Mock.mock('/api/booklist', 'get', require('./mock/booklist'));
+Mock.mock('/api/bookinfo', 'post', function (req) {
+  var id = JSON.parse(req.body).id;
+  var bookinfos = require('./mock/booklist');
+  var result = null;
+  bookinfos.some(function (item) {
+    if (parseInt(id) === item.id) {
+      return result = item
+    }
+  })
+  return result
+});
 Mock.mock('/api/bookdetails', 'get', require('./mock/bookdetailsimage'));
 Mock.mock('/api/postcomments', 'get', require('./mock/comments'));
 Mock.mock('/api/bookstore', 'get', require('./mock/booklist'));

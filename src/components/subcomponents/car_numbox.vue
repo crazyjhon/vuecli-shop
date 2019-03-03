@@ -26,7 +26,7 @@
             getCount: function () {
                 var selectNum=parseInt(mui(this.id).numbox().getValue());
                 // //数据过滤,如果小于=0或者大于库存就取1或者库存值
-                this.count=selectNum>this.max ? this.max :selectNum<=0 ? 1 : selectNum;
+                this.count=selectNum > this.max ? this.max :selectNum<=0 ? 1 : selectNum;
                 //更新localstornge里面的数据
 
                 this.$store.commit('updateCarListCount',{id:this.goodsId,count:this.count});

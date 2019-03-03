@@ -9,9 +9,9 @@
                         <input type="checkbox" :value="item.id" @change.stop="selectedChange(item.id,item.selected)" v-model="item.selected">
 
                         <div class="goods">
-                            <img :src="item.url">
+                            <img :src="item.url" @click="godetails(item.id)">
                             <div class="title-price">
-                                <h5>{{ item.title }}</h5>
+                                <h5 @click="godetails(item.id)">{{ item.title }}</h5>
                                 <span>￥{{ item.price }} &nbsp;</span>
                                 <numbox :num="$store.getters.getCarEachCount[item.id]" :goodsId="item.id"></numbox>&nbsp;
                                 <a href="javascript:0" @click.prevent="remove(item.id,index)">删除</a>
@@ -52,6 +52,10 @@
             document.querySelector(".app-container").style.paddingBottom="0px";
         },
         methods:{
+            godetails:function(id){
+              //js形式编程式导航
+              this.$router.push('/home/booksinfo/'+id);
+            },
             getCartList:function(){
                 var that=this;
                 // this.$http.get('./dataJson/cartlist.json').then(function(res){

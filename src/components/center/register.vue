@@ -1,5 +1,13 @@
 <template>
-    <h1>注册页面</h1>
+    <div class="register">
+      <div class="mui-card">
+        <div class="mui-card-content">
+          <div class="mui-card-content-inner">
+            zhuce
+          </div>
+        </div>
+      </div>
+    </div>
 </template>
 
 <script>
