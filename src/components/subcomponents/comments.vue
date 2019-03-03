@@ -15,7 +15,7 @@
         <div class="mui-card-content">
           <div class="mui-card-content-inner">
             <ul class="comments-group">
-            <li v-for="item in newsList" :key="item.user" class="comments-list">
+            <li v-for="item in comment" :key="item.user" class="comments-list">
                 <div>
                     <p class="user">用户：{{ item.user }}</p>
                     <p class="comments-content">{{ item.content }}</p>
@@ -23,6 +23,8 @@
                     <hr>
                 </div>
             </li>
+            <li v-show="noComments" class="noComments">暂时没有评论...</li>
+            <li @click="!noComments && addMore()" v-show="!noComments" class="noComments">{{ addData }}</li>
         </ul>
           </div>
         </div>
@@ -32,12 +34,13 @@
 
 <script>
     import {Toast } from 'mint-ui';
-
-
     export default {
         data:function(){
             return {
-                content:''
+                content:'',
+                comment:[],
+                noComments:true,
+                addData:'点击加载所有评论'
             }
         },
         methods:{
@@ -47,16 +50,27 @@
                     return
                 }
                 var that=this;
-                this.$http.get('/api/comments',{data:that.content}).then(function(res){
+                this.$http.get('/api/postcomments',{data:that.content}).then(function(res){
                     if(res.body.status==="ok"){
                         Toast("发表成功！");
                     }else{
                         Toast("发表失败！");
                     }
                 })
+            },
+            addMore:function () {
+              this.noComments = false;
+              this.addData = '没有更多评论了';
+              this.$emit('getMore','all');
             }
         },
-        props:['newsList']
+        watch:{
+          comments:function(n,o){
+            this.noComments = n === false ? true : false;
+            this.comment = n === false ? [] : n;
+          }
+        },
+        props:['comments']
     }
 </script>
 
@@ -110,6 +124,12 @@
                     border:1px dashed #8A9295;
                 }
             }
+        }
+        .noComments{
+          text-align: center;
+          letter-spacing: 2px;
+          color:#8a6de9;
+          font-size:15px;
         }
     }
 }

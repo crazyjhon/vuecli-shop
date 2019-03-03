@@ -27,6 +27,25 @@ Mock.mock('/api/newsdetails', 'post', function (req) {
   });
   return result;
 });
+Mock.mock('/api/newscomments', 'post', function (req) {
+  var newsId = JSON.parse(req.body).newsID;
+  var all = JSON.parse(req.body).all;
+  var newsComments = require('./mock/newsComments');
+  var result = null;
+  newsComments.some(function (item) {
+    if (newsId === item.id){
+      if (all === 'all') {
+        result = item.commentsData;
+      } else {
+        result = item.commentsData.splice(0,3);
+      }
+      return true;
+    }
+  });
+  //每次查询完数据，都要清除require的默认缓存，下次调用的时候重新加载。
+  delete require.cache[require.resolve('./mock/newsComments')];
+  return result;
+});
 Mock.mock('/api/photos', 'post', function (req) {
   var data = JSON.parse(req.body);
   var page = data.page;
@@ -46,7 +65,6 @@ Mock.mock('/api/book', 'post', function (req) {
   var newsData = require('./mock/booklist');
   var news = newsData;
   var jiequ = news.splice((page-1)*pagesize,pagesize);
-
   //每次查询完数据，都要清除require的默认缓存，下次调用的时候重新加载。
   delete require.cache[require.resolve('./mock/booklist')];
   return jiequ;
@@ -54,7 +72,7 @@ Mock.mock('/api/book', 'post', function (req) {
 Mock.mock('/api/bookswipe', 'get', require('./mock/bookswipe'));
 Mock.mock('/api/booklist', 'get', require('./mock/booklist'));
 Mock.mock('/api/bookdetails', 'get', require('./mock/bookdetailsimage'));
-Mock.mock('/api/comments', 'get', require('./mock/comments'));
+Mock.mock('/api/postcomments', 'get', require('./mock/comments'));
 Mock.mock('/api/bookstore', 'get', require('./mock/booklist'));
 Mock.mock('/api/login', 'post', function (req) {
   var usersession = require('./mock/session');

@@ -29,7 +29,6 @@
                 }
                 var that=this;
                 this.$http.get(url).then(function(res){
-
                     that.imgSrc=res.body;
                     // if(res.status===200){
                     //     // that.imgSrc=res.body;

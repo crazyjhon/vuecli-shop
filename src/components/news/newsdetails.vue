@@ -22,7 +22,7 @@
           </div>
         </div>
       </div>
-        <comments :newsList="newsList"></comments>
+        <comments :comments="newsComments" @getMore="getComments"></comments>
     </div>
 </template>
 <script>
@@ -33,24 +33,28 @@
             return {
                 id:this.$route.params.id,
                 newsdetails:{},
-                newsList:[
-                    {user:'四代歼机',content:'习总威武！',date:'2019-01-31 06:31:00'},
-                    {user:'行尽江南',content:'南开大学不愧是百年名校！',date:'2019-01-31 9:00:00'},
-                    {user:'于斯为盛',content:'啥时候来武大，看樱花啊，虽然这里很热，但是冬天很暖！',date:'2019-01-31 22:31:00'},
-                    {user:'杜预',content:'习总身边肯定有很多智囊！',date:'2019-01-31 13:31:00'},
-                    {user:'湾仔',content:'台湾领导过年就会送米面油！',date:'2019-01-31 15:31:00'}
-                ]
+                newsComments:[]
             }
         },
         created:function(){
-          this.show();
+          this.showNews();
+          this.getComments();
         },
         methods:{
-            show:function(){
-                var that=this;
-                this.$http.post('/api/newsdetails',{newsID:that.id}).then(function(res){
-                  that.newsdetails = res.body;
+            showNews:function(){
+                this.$http.post('/api/newsdetails',{newsID:this.id}).then((res) => {
+                  this.newsdetails = res.body;
                 });
+            },
+            getComments:function (all) {
+              this.$http.post('/api/newscomments',{newsID:this.id,all:all}).then((res) => {
+                //没有评论，传给评论组件一个false
+                if (res.body === 'null'){
+                  this.newsComments = false;
+                  return
+                }
+                this.newsComments = res.body;
+              });
             }
         },
         components:{
