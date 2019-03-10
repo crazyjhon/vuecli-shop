@@ -7,6 +7,8 @@ import center from '@/components/center.vue';
 import password from '@/components/center/password.vue';
 import me from '@/components/center/me.vue';
 import address from '@/components/center/address.vue';
+import address_editor from '@/components/center/address_editor.vue';
+import address_add from '@/components/center/address_add.vue';
 import register from '@/components/center/register.vue';
 import login from '@/components/center/login.vue';
 import logout from '@/components/center/logout.vue';
@@ -28,6 +30,8 @@ export default new Router({
         {path:'/center/me',component:me,name:'用户中心'},
         {path:'/center/password',component:password,name:'账户安全'},
         {path:'/center/address',component:address,name:'收货地址管理'},
+        {path:'/center/address_editor/:id',component:address_editor,name:'编辑收货地址'},
+        {path:'/center/address_add',component:address_add,name:'新增收货地址'},
         {path:'/center/register',component:register,name:'用户注册'},
         {path:'/center/login',component:login,name:'用户登陆'},
         {path:'/center/logout',component:logout,name:'退出登陆'},

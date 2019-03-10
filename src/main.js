@@ -33,7 +33,7 @@ Vue.use(mintUI, {
 //导入MUI包
 
 import Mui from 'vue-awesome-mui';
-import 'vue-awesome-mui/mui/dist/css/mui.min.css'
+import 'vue-awesome-mui/mui/dist/css/mui.css'
 import 'vue-awesome-mui/mui/dist/css/icons-extra.css'
 Vue.use(Mui);
 

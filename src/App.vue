@@ -54,7 +54,7 @@
            this.isHidden=this.$store.getters.getAllCount ? false : true;
            //返回按钮
           this.flag = this.$route.path === "/home" || this.$route.path === '/center' ||
-                      this.$route.path === '/center/me' ? false :true;
+                      this.$route.path === '/center/me' ||this.$route.path === '/center/login' ? false :true;
         },
         //监听vuex的getAllcount的返回值，如果改变了，就让购物车徽章显示出来，computed和watch的组合
         computed:{
@@ -67,7 +67,7 @@
                 this.isHidden=n ? false : true;
             },
             '$route.path':function(n){
-                if (n==='/home' || n === '/center/me' || n === '/center') {
+                if (n==='/home' || n === '/center/me' || n === '/center' || n==='/center/login') {
                     this.flag=false;
                 } else {
                     this.flag=true;
@@ -81,7 +81,8 @@
 <style lang="scss" scoped>
     .app-container{
         width:100%;
-        padding-top:35px;
+        height: 100%;
+        padding-top:40px;
         padding-bottom:60px;
         /* 设置滚动条宽度  */
         ::-webkit-scrollbar {

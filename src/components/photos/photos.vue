@@ -1,6 +1,6 @@
 <template>
-    <div id="slider"  class="mui-slider">
-        <div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+    <div id="photos">
+        <div class="mui-scroll-wrapper  mui-segmented-control mui-segmented-control-inverted">
             <div class="mui-scroll">
                 <a class="mui-control-item mui-active">
                     全部
@@ -83,6 +83,8 @@
         mounted:function(){//vue将元素渲染完毕的时候再操作元素
             mui('.mui-scroll-wrapper').scroll({
                 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+                scrollY: false,//是否竖向滚动
+                scrollX: false, //是否横向滚动
             });
         },
         methods:{
@@ -112,7 +114,8 @@
     *{
         touch-action:pan-y;
     }
-    #slider{
+
+    #photos{
       .image-list{
         padding:15px;
         ul{
