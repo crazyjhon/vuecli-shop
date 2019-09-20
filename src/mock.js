@@ -102,5 +102,20 @@ Mock.mock('/api/login', 'post', function (req) {
 Mock.mock('/api/logout', 'post', function (req) {
   return {err_code:1,message:'退出登陆成功'};
 });
+Mock.mock('/api/register', 'post', function (req) {  
+  var postdata = JSON.parse(req.body);
+  var serverdata = require('./mock/register.json');
+  if (parseInt(postdata.iphonenumber) === serverdata.iphonenumber && parseInt(postdata.checkcode) === serverdata.checkcode) {
+    return {
+      err_code :1,
+      message : '注册成功'
+    }
+  } else {
+    return {
+      err_code :0,
+      message : '验证码错误'
+    }
+  }  
+});
 
 

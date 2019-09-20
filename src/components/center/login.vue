@@ -53,12 +53,12 @@
                         this.$router.push('/center/me');
 
                       } else if(res.body.err_code ===0) {
-                        console.log(res.body.message);
+                        alert('用户名或密码不正确');
                       }
 
                     })
                 } else{
-                  alert('用户名或者密码为空');
+                  alert('请输入用户名和密码');
                 }
             }
         }
@@ -79,6 +79,7 @@
             line-height: 20px;
             float: right;
             letter-spacing: 2px;
+            color:#8a6de9;
         }
     }
 </style>

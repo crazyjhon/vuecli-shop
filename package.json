@@ -16,6 +16,7 @@
     "mescroll.js": "^1.4.0",
     "mint-ui": "^2.2.13",
     "mockjs": "^1.0.1-beta3",
+    "node-sass": "^4.12.0",
     "vue": "^2.5.2",
     "vue-awesome-mui": "^1.7.3",
     "vue-resource": "^1.5.1",
